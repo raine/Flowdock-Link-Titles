@@ -11,7 +11,6 @@
  * getting history spams requests
  * ! investigate yql caching state
  * slight delay to hover activation
- * co.uk
  * timeout
  */
 
