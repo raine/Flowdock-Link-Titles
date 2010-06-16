@@ -9,8 +9,7 @@
 /*
  * TODO
  * getting history spams requests
- * investigate possibility to fetch multiple titles in a single request
- * investigate yql caching state
+ * ! investigate yql caching state
  * slight delay to hover activation
  * co.uk
  * timeout
