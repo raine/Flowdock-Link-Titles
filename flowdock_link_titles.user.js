@@ -72,8 +72,13 @@ function linkTitles(jQuery) {
     var bottom = (($("#chat_container")[0].scrollHeight - $("#chat_container").outerHeight()) - $("#chat_container").scrollTop()) < 100;
 
     SimpleYQL.get(link.attr('href'), { xpath: '//title/text()' }, function(title) {
-      link.text(title);
       loader.remove();
+
+      if (!title) {
+        return;
+      }
+
+      link.text(title);
 
       $("<span />", {
         css: {
