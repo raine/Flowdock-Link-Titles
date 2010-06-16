@@ -9,7 +9,6 @@
 /*
  * TODO
  * getting history spams requests
- * ! investigate yql caching state
  * slight delay to hover activation
  * timeout
  */
