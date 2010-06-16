@@ -9,7 +9,6 @@
 /*
  * TODO
  * getting history spams requests
- * slight delay to hover activation
  * timeout
  */
 
