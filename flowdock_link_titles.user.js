@@ -64,7 +64,7 @@ function linkTitles(jQuery) {
     }).appendTo(link.parent());
 
     var hostname = link.attr('href').match(/^https?:\/\/([^/]+)?/i)[1];
-    var domain   = hostname.match(/([^.]+\.[^.]+)$/)[1];
+    var domain   = hostname.split(".").splice(-3).join(".");
     var bottom   = (($("#chat_container")[0].scrollHeight - $("#chat_container").outerHeight()) - $("#chat_container").scrollTop()) < 100;
 
     SimpleYQL.get(link.attr('href'), { xpath: '//title/text()' }, function(title) {
