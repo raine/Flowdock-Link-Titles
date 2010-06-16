@@ -64,8 +64,13 @@ function linkTitles(jQuery) {
     }).appendTo(link.parent());
 
     var hostname = link.attr('href').match(/^https?:\/\/([^/]+)?/i)[1];
-    var domain   = hostname.split(".").splice(-3).join(".");
-    var bottom   = (($("#chat_container")[0].scrollHeight - $("#chat_container").outerHeight()) - $("#chat_container").scrollTop()) < 100;
+    hostname = hostname.split(".").splice(-3);
+    if (hostname[0] == 'www') {
+      hostname.shift();
+    }
+    hostname = hostname.join(".");
+
+    var bottom = (($("#chat_container")[0].scrollHeight - $("#chat_container").outerHeight()) - $("#chat_container").scrollTop()) < 100;
 
     SimpleYQL.get(link.attr('href'), { xpath: '//title/text()' }, function(title) {
       link.text(title);
@@ -77,7 +82,7 @@ function linkTitles(jQuery) {
           fontSize: '8pt',
           marginLeft: '4px'
         },
-        text: domain
+        text: hostname
       }).insertAfter(link);
 
       // If the chat scrollbar was in a reasonably small distance from the bottom
