@@ -118,7 +118,14 @@ function linkTitles(jQuery) {
     })();
 
     $("#chat_flow .chat_line_content a:not(.app-tag-link)").live('mouseover', function() {
-      showTitle($(this));
+      var link = $(this);
+      var id = setTimeout(function() {
+        showTitle(link);
+      }, 300);
+
+      $(this).one('mouseleave', function() {
+        clearTimeout(id);
+      });
     });
   });
 }
