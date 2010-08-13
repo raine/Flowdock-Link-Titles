@@ -68,7 +68,7 @@ function linkTitles(jQuery) {
     }
     hostname = hostname.join(".");
 
-    var bottom = (($("#chat_container")[0].scrollHeight - $("#chat_container").outerHeight()) - $("#chat_container").scrollTop()) < 100;
+    var bottom = (($("#chat_app_lines")[0].scrollHeight - $("#chat_app_lines").outerHeight()) - $("#chat_app_lines").scrollTop()) < 100;
 
     SimpleYQL.get(link.attr('href'), { xpath: '//title[1]/text()' }, function(title) {
       loader.remove();
@@ -91,7 +91,7 @@ function linkTitles(jQuery) {
       // If the chat scrollbar was in a reasonably small distance from the bottom
       // when the title fetching was initiated, move the scrollbar to the bottom
       if (bottom) {
-        $("#chat_container").scrollTo('max');
+        $("#chat_app_lines").scrollTo('max');
       }
     });
   }
@@ -100,10 +100,10 @@ function linkTitles(jQuery) {
     var loaded = false;
 
     (function() {
-      if ($("#chat_loader:hidden").length) {
+      if ($("#chat_app").length) {
         var loadedAt = new Date();
 
-        $("#chat_flow .chat_line_content a").livequery(function() {
+        $("#chat_app .chat_line_content a").livequery(function() {
           var timeSince = (new Date()).getTime() - loadedAt.getTime();
           if (timeSince < 1000) {
             return;
@@ -112,11 +112,11 @@ function linkTitles(jQuery) {
           showTitle($(this));
         });
       } else {
-        setTimeout(arguments.callee, 100);
+        setTimeout(arguments.callee, 200);
       }
     })();
 
-    $("#chat_flow .chat_line_content a:not(.app-tag-link)").live('mouseover', function() {
+    $("#chat_app .chat_line_content a:not(.app-tag-link)").live('mouseover', function() {
       var link = $(this);
       var id = setTimeout(function() {
         showTitle(link);
